@@ -1,0 +1,8 @@
+venv
+media/images/segment/*
+media/images/upload/*
+db.sqlite3
+
+corn_disease_app/__pycache__
+detection/__pycache__
+src/clds_lib/__pycache__

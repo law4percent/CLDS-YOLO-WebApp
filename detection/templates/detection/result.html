@@ -1,0 +1,62 @@
+{% extends "main.html" %}
+
+
+{% block content %}
+    <div class="container">
+        <div class="upload-section">
+            <form action="{% url 'process_image' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="file-input">
+                    <input type="file" name="image" id="image" accept="image/*" required>
+                    <label for="image">
+                        <i class="fas fa-upload"></i> Select Image
+                    </label>
+                    <button type="submit" class="cta-button">Analyze</button>
+                </div>
+            </form>
+        </div>
+
+        {% if rla %}
+        <div class="results-container">
+            <div class="image-section">
+                <h3>Uploaded Image</h3>
+                <img src="{{ uploaded_image_url }}" alt="Uploaded Image">
+            </div>
+
+            <div class="details-section">
+                <h2>Detection Results</h2>
+                <div class="detail-item">
+                    <strong>Number of Diseased:</strong>
+                    <span>{{ diseased_count }}</span>
+                </div>
+                <div class="detail-item">
+                    <strong>Number of Leaf:</strong>
+                    <span>{{ numb_of_leaf }}</span>
+                </div>
+                <div class="detail-item">
+                    <strong>RLA:</strong>
+                    <span>{{ rla }}</span>
+                </div>
+                <div class="detail-item">
+                    <strong>Severity:</strong>
+                    <span>{{ severity }}</span>
+                </div>
+                <div class="detail-item">
+                    <strong>Severity Level:</strong>
+                    <span>{{ severity_level }}</span>
+                </div>
+            </div>
+
+            <div class="image-section">
+                <h3>Segmented Image</h3>
+                <img src="{{ segmented_image_url }}" alt="Segmented Image">
+            </div>
+        </div>
+
+        <div class="container" style="text-align: center;">
+            <a href="{% url 'process_image' %}" class="cta-button">Analyze Another Image</a>
+        </div>
+        {% endif %}
+    </div>
+
+{% endblock content %}

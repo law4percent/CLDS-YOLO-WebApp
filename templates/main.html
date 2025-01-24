@@ -1,0 +1,36 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corn Disease Detection</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    
+    <!-- Include CSS -->
+    <link rel="stylesheet" href="{% static "css/styles.css" %}">
+</head>
+
+<body>
+    <div class="header">
+        <div class="container">
+            <h1>Corn Leaf Disease Detection</h1>
+        </div>
+    </div>
+
+    {% block content %}
+            
+    {% endblock content %}
+
+    <!-- AI-Themed Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="ai-loader">
+            <div class="ai-loader-inner"></div>
+        </div>
+        <div class="ai-loader-text">Analyzing Image</div>
+    </div>
+
+    <script src="{% static "js/script.js" %}"></script>
+</body>
+</html>
